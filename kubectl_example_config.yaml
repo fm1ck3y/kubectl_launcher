@@ -1,0 +1,38 @@
+kubectl_servers:
+  - name: Server1
+    host: http://localhost
+    port: 8001
+    verify_ssl: False
+
+  - name: Server2
+    host: http://localhost
+    port: 8082
+    verify_ssl: False
+
+deployments:
+  - name: mysql-deployment
+    filename: kubernetes_files_example/mysql-deployment.yaml
+    namespace: default
+    servers:
+      - name: Server1
+      - name: Server2
+
+  - name: nginx
+    filename: kubernetes_files_example/nginx.yaml
+    namespace: default
+    servers:
+      - name: Server1
+
+services:
+ - name: mysql-service.yaml
+   filename: kubernetes_files_example/mysql-service.yaml
+   namespace: default
+   servers:
+     - name: Server1
+
+persistentVolumes:
+  - name: mysql-volume.yaml
+    filename: kubernetes_files_example/mysql-volume.yaml
+    namespace: default
+    servers:
+      - name: Server1
