@@ -8,6 +8,8 @@ kubectl_servers:
     host: http://localhost
     port: 8082
     verify_ssl: False
+    #verify_ssl: True
+    #ssl_ca_cert: path/to/ca-file
 
 deployments:
   - name: mysql-deployment
